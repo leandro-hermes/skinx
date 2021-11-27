@@ -60,6 +60,13 @@ $transition: all 0.35s ease-in-out;
         border-right-color: transparent;
         border-left-color: transparent;
       }
+
+      .text {
+        font-size: small;
+        color: gray;
+        padding-top: 6px;
+        display: block;
+      }
     }
   }
 

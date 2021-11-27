@@ -45,10 +45,18 @@ export class HomeComponent implements OnInit {
       ...ITEMS,
       ...ITEMS,
     ].map((item: any) => {
-      const rate = item.price / item.oldPrice;
-      item.discount = '-' + Math.round((1 - rate) * 100) + '%';
+      if (item.oldPrice) {
+        const rate = item.price / item.oldPrice;
+        item.discount = '-' + Math.round((1 - rate) * 100) + '%';
+      }
+
       item.float = Math.random() * 100;
+
       return item;
     });
+  }
+
+  public swipeImg(item: any): void {
+    item.switch = !item.switch;
   }
 }

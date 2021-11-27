@@ -5,14 +5,14 @@
          [class.col-6]="line.length === 2"
          [class.col-3]="line.length === 4"
          *ngFor="let item of line" [routerLink]="[item.id]">
-      <div class="card" (swipeleft)="item.switch = !item.switch" (swiperight)="item.switch = !item.switch"
-           [class.switch]="item.switch">
-        <img [src]="item.img1" class="card-img-top img1" alt>
-        <img [src]="item.img2" class="card-img-top img2" alt>
+      <div class="card" [class.switch]="item.switch">
+        <img [src]="item.img1" class="card-img-top img1" alt (swipeleft)="swipeImg(item)" (swiperight)="swipeImg(item)">
+        <img [src]="item.img2" class="card-img-top img2" alt (swipeleft)="swipeImg(item)" (swiperight)="swipeImg(item)">
         <div class="card-body">
           <p class="card-text">{{ item.title }}</p>
           <div class="float">
             <span class="marker" [style.left]="item.float + '%'"></span>
+            <span class="text">Float: {{ item.float / 100 }}</span>
           </div>
         </div>
         <div class="card-footer text-muted text-right" [ngbTooltip]="item.discount">
