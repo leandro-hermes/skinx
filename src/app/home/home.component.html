@@ -5,7 +5,8 @@
          [class.col-6]="line.length === 2"
          [class.col-3]="line.length === 4"
          *ngFor="let item of line" [routerLink]="[item.id]">
-      <div class="card">
+      <div class="card" (swipeleft)="item.switch = !item.switch" (swiperight)="item.switch = !item.switch"
+           [class.switch]="item.switch">
         <img [src]="item.img1" class="card-img-top img1" alt>
         <img [src]="item.img2" class="card-img-top img2" alt>
         <div class="card-body">

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { GdPipesModule } from '@gdoor/helpers/pipes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,6 +19,7 @@ import { DetailComponent } from './detail/detail.component';
     AppRoutingModule,
     NgbModule,
     GdPipesModule,
+    HammerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
