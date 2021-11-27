@@ -1,8 +1,8 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Arr } from '@gdoor/helpers';
-import { merge, Observable, pipe } from 'rxjs';
-import { map, mapTo, tap } from 'rxjs/operators';
+import { merge, Observable } from 'rxjs';
+import { filter, map, mapTo, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -32,17 +32,19 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit(): void {
     const one = this._breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small]).pipe(
+      filter(({ matches }) => matches),
       mapTo(1),
     );
-    const two = this._breakpointObserver.observe([ Breakpoints.Medium]).pipe(
+    const two = this._breakpointObserver.observe([Breakpoints.Medium]).pipe(
+      filter(({ matches }) => matches),
       mapTo(2),
     );
-    const four = this._breakpointObserver.observe([Breakpoints.Large, Breakpoints.XLarge]).pipe(
+    const four = this._breakpointObserver.observe([Breakpoints.Web]).pipe(
+      filter(({ matches }) => matches),
       mapTo(4),
     );
 
     this.list$ = merge(one, two, four).pipe(
-      tap(console.log),
       map(cols => Arr.chunk(this.getList(), cols)),
     );
   }
