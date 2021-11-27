@@ -1,0 +1,17 @@
+version: 0.2
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - rm -rf node_modules
+        - yarn install
+    build:
+      commands:
+        - yarn prod
+  artifacts:
+    baseDirectory: dist/skinx
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
