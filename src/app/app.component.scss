@@ -12,7 +12,7 @@
     bottom: 0;
     right: 0;
     top: 0;
-    opacity: 0.1;
+    opacity: 0.05;
     background-image: url(/assets/img/bg.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,6 +25,7 @@ nav.toolbar {
   gap: 16px;
   background-color: #000;
   max-height: 56px;
+  z-index: 1;
 
   .logo {
     display: none;
@@ -33,6 +34,7 @@ nav.toolbar {
   }
 
   .title {
+    cursor: pointer;
     margin: 0;
     line-height: 40px;
     color: #fff;
@@ -45,4 +47,5 @@ nav.toolbar {
   flex: 1 1 0;
   overflow: auto;
   padding: 24px;
+  z-index: 1;
 }
