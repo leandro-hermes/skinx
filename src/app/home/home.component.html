@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row" *ngFor="let line of list">
+    <div class="col col-3" *ngFor="let item of line" [routerLink]="[item.id]">
+      <div class="card">
+        <img [src]="item.img1" class="card-img-top img1" alt>
+        <img [src]="item.img2" class="card-img-top img2" alt>
+        <div class="card-body">
+          <p class="card-text">{{ item.title }}</p>
+          <div class="float">
+            <span class="marker" [style.left]="item.float + '%'"></span>
+          </div>
+        </div>
+        <div class="card-footer text-muted text-right" [ngbTooltip]="item.discount">
+          <span class="old-price" *ngIf="item.oldPrice">{{ item.oldPrice | brl }}</span>
+          <span class="current-price">{{ item.price | brl }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

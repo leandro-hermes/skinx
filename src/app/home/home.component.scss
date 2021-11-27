@@ -1,0 +1,89 @@
+$transition: all 0.35s ease-in-out;
+
+.row {
+  margin-bottom: 16px;
+
+  .col {
+    outline: none;
+  }
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #262626;
+  color: #fafafa;
+  transition: $transition;
+
+  img {
+    height: 120px;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: $transition;
+
+    &.img2 {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .card-body {
+    height: 120px;
+
+    .card-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .float {
+      width: 100%;
+      height: 5px;
+      background-image: url(/assets/img/float-bar.png);
+      background-size: cover;
+      border-radius: 5px;
+      position: relative;
+
+      .marker {
+        position: absolute;
+        top: -12px;
+        left: 0;
+        margin-left: -8px;
+        width: 0;
+        height: 0;
+        border-width: 10px 8px;
+        border-style: solid;
+        border-top-color: white;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+      }
+    }
+  }
+
+  .card-footer {
+    .old-price {
+      text-decoration: line-through;
+      opacity: 0.5;
+      margin-right: 8px;
+      font-size: small;
+    }
+  }
+
+  &:hover {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    background-color: #3d3d3d;
+
+    img {
+      &.img1 {
+        opacity: 0;
+      }
+
+      &.img2 {
+        opacity: 0.8;
+      }
+    }
+  }
+}

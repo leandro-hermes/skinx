@@ -1,0 +1,12 @@
+.images {
+  display: flex;
+  gap: 16px;
+  height: 300px;
+
+  img {
+    height: 100%;
+    width: calc(50% - 16px);
+    object-fit: cover;
+    border-radius: 8px;
+  }
+}
