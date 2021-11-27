@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
 import { Arr } from '@gdoor/helpers';
+import { merge, Observable, pipe } from 'rxjs';
+import { map, mapTo, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   line1 = [
     // @formatter:off
-    { id: 1, title: 'Buterfly Doppler Emeral FN', img1: '/assets/img/items/imagem 1.jpeg',     img2: '/assets/img/items/imagem 1.2.jpeg', price: 70000, oldPrice: 75000 },
+    { id: 1, title: 'Buterfly Doppler Emerald FN', img1: '/assets/img/items/imagem 1.jpeg',     img2: '/assets/img/items/imagem 1.2.jpeg', price: 70000, oldPrice: 75000 },
     { id: 2, title: 'AWP Gungnir FN', img1: '/assets/img/items/imagem 2.jpg',                  img2: '/assets/img/items/imagem 2.2.jpg', price: 33000, oldPrice: 34000 },
     { id: 3, title: 'M4A4 Howl StraTrek FN', img1: '/assets/img/items/imagem 3.jpg',           img2: '/assets/img/items/imagem 3.2.jpg', price: 30000, oldPrice: 32000 },
     { id: 4, title: 'Baioneta M9 Ruby FN', img1: '/assets/img/items/imagem 4.jpg',             img2: '/assets/img/items/imagem 4.2.jpg', price: 48000 },
@@ -20,10 +23,28 @@ export class HomeComponent implements OnInit {
     // @formatter:on
   ];
 
-  list: any[] = [];
+  list$?: Observable<any[]>;
+
+  constructor(
+    private readonly _breakpointObserver: BreakpointObserver,
+  ) {
+  }
 
   public ngOnInit(): void {
-    this.list = Arr.chunk(this.getList(), 4);
+    const one = this._breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small]).pipe(
+      mapTo(1),
+    );
+    const two = this._breakpointObserver.observe([ Breakpoints.Medium]).pipe(
+      mapTo(2),
+    );
+    const four = this._breakpointObserver.observe([Breakpoints.Large, Breakpoints.XLarge]).pipe(
+      mapTo(4),
+    );
+
+    this.list$ = merge(one, two, four).pipe(
+      tap(console.log),
+      map(cols => Arr.chunk(this.getList(), cols)),
+    );
   }
 
   private getList(): any[] {

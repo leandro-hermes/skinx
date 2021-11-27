@@ -1,6 +1,10 @@
 <div class="container">
-  <div class="row" *ngFor="let line of list">
-    <div class="col col-3" *ngFor="let item of line" [routerLink]="[item.id]">
+  <div class="row" *ngFor="let line of list$ | async">
+    <div class="col"
+         [class.col-12]="line.length === 1"
+         [class.col-6]="line.length === 2"
+         [class.col-3]="line.length === 4"
+         *ngFor="let item of line" [routerLink]="[item.id]">
       <div class="card">
         <img [src]="item.img1" class="card-img-top img1" alt>
         <img [src]="item.img2" class="card-img-top img2" alt>
