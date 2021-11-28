@@ -1,0 +1,122 @@
+:host {
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.window {
+  flex: 1 1 0;
+
+  .chat {
+    -webkit-box-shadow: inset 5px 5px 15px 5px #000000;
+    box-shadow: inset 5px 5px 15px 5px #000000;
+    background-color: #282828;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 32px;
+
+    .message {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+
+      &:first-of-type {
+        margin-top: 10px;
+      }
+
+      .text {
+        flex: 0 0 auto;
+        padding: 10px 24px;
+        border-radius: 10px;
+        background-color: #3c3c3c;
+        color: white;
+        word-wrap: break-word;
+        max-width: 80%;
+      }
+
+      &.left {
+        text-align: left;
+        justify-content: flex-start;
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: -16px;
+          top: 8px;
+          transform: translateY(-50%);
+          width: 0;
+          height: 0;
+          border-left: 16px solid transparent;
+          border-right: 16px solid transparent;
+          border-top: 16px solid #3c3c3c;
+        }
+      }
+
+      &.right {
+        text-align: right;
+        justify-content: flex-end;
+
+        &:before {
+          content: "";
+          position: absolute;
+          right: -16px;
+          top: 8px;
+          transform: translateY(-50%);
+          width: 0;
+          height: 0;
+          border-left: 16px solid transparent;
+          border-right: 16px solid transparent;
+          border-top: 16px solid #3c3c3c;
+        }
+      }
+
+      .from {
+        position: absolute;
+        top: -18px;
+        font-size: small;
+        color: #a7a7a7;
+      }
+
+      &.glued {
+        margin-top: -12px;
+
+        &:before, &:after {
+          display: none;
+        }
+      }
+
+      &:not(.glued) {
+        &.left {
+          .text {
+            border-top-left-radius: 0;
+          }
+        }
+
+        &.right {
+          .text {
+            border-top-right-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.input-bar .col {
+  padding-top: 10px;
+  display: flex;
+  gap: 16px;
+
+  input {
+    flex: 1 1 0;
+    border-radius: 8px;
+    outline: none;
+    padding: 4px 8px;
+  }
+}

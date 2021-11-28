@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Vender</h1>
+      <h4>Converse com um consultor da <span class="skinx">skinX</span></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+
+      </p>
+    </div>
+  </div>
+  <div class="row window">
+    <div class="col col-md-12">
+      <div class="chat">
+        <div class="message" *ngFor="let message of messages; let i = index"
+             [class.left]="message.from !== 'Me'"
+             [class.right]="message.from === 'Me'"
+             [class.glued]="messages[i - 1]?.from === message.from">
+          <span class="from" *ngIf="messages[i - 1]?.from !== message.from">{{ message.from }}</span>
+          <p class="text">{{ message.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row input-bar">
+    <div class="col col-md-12">
+      <input type="text" #text (keydown.enter)="btn.click()">
+      <button class="btn btn-success float-right" #btn (click)="send(text.value); text.value = ''">
+        Enviar
+      </button>
+    </div>
+  </div>
+</div>

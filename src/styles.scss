@@ -2,3 +2,17 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+.spacer {
+  flex: 1 1 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.skinx {
+  color: #fff;
+  text-shadow: 0 0 5px fuchsia;
+  font-family: Shrikhand, cursive;
+}
