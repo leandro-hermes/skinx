@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { GdPipesModule } from '@gdoor/helpers/pipes';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { SellComponent } from './sell/sell.component';
     NgbModule,
     GdPipesModule,
     HammerModule,
+    NgbCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

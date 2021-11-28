@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ITEMS } from '../items';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  styleUrls: ['./detail.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DetailComponent implements OnInit {
   id?: number;
-
-  public selectedImg?: string;
 
   public item?: any;
 
@@ -21,7 +20,6 @@ export class DetailComponent implements OnInit {
   public ngOnInit(): void {
     this.id = Number(this._route.snapshot.params.id);
     this.item = this.getItem();
-    this.selectedImg = this.item.img1;
   }
 
   public getItem(): any {

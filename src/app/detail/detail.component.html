@@ -1,15 +1,18 @@
 <a routerLink="../" class="btn btn-dark">Voltar</a>
 
 <div class="container" *ngIf="item">
-  <div class="images">
-    <div class="outdoor">
-      <img [src]="selectedImg" alt>
-    </div>
-    <div class="carousel">
-      <img [src]="item.img1" (click)="selectedImg = item.img1" alt>
-      <img [src]="item.img2" (click)="selectedImg = item.img2" alt>
-    </div>
-  </div>
+  <ngb-carousel>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="item.img1" alt="Random first slide">
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="item.img2" alt="Random first slide">
+      </div>
+    </ng-template>
+  </ngb-carousel>
 
   <div class="text text-center">
     <h1>{{ item.title }}</h1>
